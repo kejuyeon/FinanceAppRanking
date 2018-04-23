@@ -73,13 +73,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let screenshots = detail.screenshotUrls else {return}
         var xPositon = CGFloat(0)
         for screenshot in screenshots {
-            let imageView = MyImageView(frame: CGRect(x: xPositon, y: CGFloat(0), width: self.screenshotView.frame.size.width*0.6, height: self.screenshotView.frame.size.height))
+            let imageView = MyImageView(frame: CGRect(x: xPositon, y: CGFloat(0), width: self.screenshotView.frame.size.height*0.6, height: self.screenshotView.frame.size.height))
             self.screenshotView.addSubview(imageView)
-            xPositon += self.screenshotView.frame.size.width*0.6
+            xPositon += self.screenshotView.frame.size.height*0.6
             imageView.downloadImageFrom(screenshot, .scaleAspectFit)
         }
         self.screenshotView.contentSize = CGSize(width: xPositon, height: (self.screenshotView?.frame.size.height)!)
-        // ["판매자","크기", "카테고리", "연령"]
         self.infoList.append(detail.sellerName!)
         self.infoList.append("\((Double(detail.fileSizeBytes!)!/1048576.0).roundToPlaces(places: 2)) MB")
         self.infoList.append((detail.genres?.first)!)
