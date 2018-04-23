@@ -270,7 +270,7 @@
                                             <constraint firstAttribute="height" constant="59" id="yrE-xd-kwR"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fx-Hl-H2D">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fx-Hl-H2D">
                                         <rect key="frame" x="0.0" y="199" width="375" height="400"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="400" id="VXR-ZU-DNi"/>

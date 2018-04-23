@@ -73,9 +73,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let screenshots = detail.screenshotUrls else {return}
         var xPositon = CGFloat(0)
         for screenshot in screenshots {
-            let imageView = MyImageView(frame: CGRect(x: xPositon, y: CGFloat(0), width: self.screenshotView.frame.size.width, height: self.screenshotView.frame.size.height))
+            let imageView = MyImageView(frame: CGRect(x: xPositon, y: CGFloat(0), width: self.screenshotView.frame.size.width*0.6, height: self.screenshotView.frame.size.height))
             self.screenshotView.addSubview(imageView)
-            xPositon += self.view.frame.size.width
+            xPositon += self.screenshotView.frame.size.width*0.6
             imageView.downloadImageFrom(screenshot, .scaleAspectFit)
         }
         self.screenshotView.contentSize = CGSize(width: xPositon, height: (self.screenshotView?.frame.size.height)!)
