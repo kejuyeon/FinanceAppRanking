@@ -31,6 +31,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var category: UILabel!
     
     var entry: Entry?
+    var rankingValue: Int?
     var infoList: [String] = []
     
     override func viewDidLoad() {
@@ -38,12 +39,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
         self.navigationItem.largeTitleDisplayMode = .never
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.appIcon.imageLayerCornerAndBorder(radius: 20.0, borderWith: 0.3, color: UIColor.lightGray.cgColor)
         self.appStoreButton.buttonCornerRadius(radius: 15.0)
         loadDetailData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     @IBAction func appStoreOpen(_ sender: Any) {
@@ -53,8 +55,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadDetailData() {
         guard let id = entry?.id.attributes?.id else { return }
-        self.category.text = entry?.category.label
-        self.ranking.text = "# \(self.view.tag+1)"
+        self.ranking.text = "# \(rankingValue!)"
         self.category.text = self.entry?.category.attributes?.label
         Utils.shared.loadDetailData(iTunesRSS.topfreeRankDetail(id).urlStr, loadCompleteHandler)
     }

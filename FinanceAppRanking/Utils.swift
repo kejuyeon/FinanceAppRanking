@@ -36,13 +36,9 @@ class Utils: NSObject {
     private override init() { }
     static let shared = Utils()
     
-    func loadData(_ urlStr: String) {
-        
-    }
-    
     func loadEntryData(_ urlStr: String, _ completHandler: @escaping ([Entry]) -> Void) {
         
-        guard let url = URL(string: iTunesRSS.topfreeRank.urlStr ) else { return }
+        guard let url = URL(string: urlStr) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
@@ -71,9 +67,6 @@ class Utils: NSObject {
             do {
                 let decoder = JSONDecoder()
                 let decodeData = try decoder.decode(Detail.self, from: data)
-                
-//                let parsedData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-//                print(parsedData)
                 DispatchQueue.main.async(execute: {
                     completeHandler(decodeData)
                 })

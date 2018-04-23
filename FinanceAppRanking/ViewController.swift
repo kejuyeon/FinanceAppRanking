@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let cellData = entry[indexPath.row]
                 let controller = segue.destination as! DetailViewController
                 controller.entry = cellData
-                controller.view.tag = indexPath.row
+                controller.rankingValue = indexPath.row + 1
             }
         }
     }
